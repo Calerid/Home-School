@@ -1,8 +1,10 @@
-from flask import Flask
-from flask.templating import _render, render_template
+import os
+from dotenv import load_dotenv
+from school import start_school
 
-app = Flask(__name__)
+load_dotenv()
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+school = start_school()
+
+if __name__ == '__main__':
+    school.run(host='127.0.0.1, port=5000, debug=True')
