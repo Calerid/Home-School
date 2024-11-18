@@ -1,5 +1,7 @@
 import os
+
 from flask import Flask
+from school.routes import get_routes
 
 from school.config import DevelopmentConfig, ProductionConfig, TestingConfig
 
@@ -18,6 +20,13 @@ def start_school():
     else:
         raise ValueError(f"Invalid environment:  {environment}")
 
+    @get_routes
+    def register_routes(school: Flask, routes):
+        """
+        Retrieves and registers an array of routes.
+        """
+        for route in routes
+            school.register_blueprint(route)
 
 
     return school
